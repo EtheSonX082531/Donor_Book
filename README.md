@@ -1,4 +1,4 @@
-# 🩸 Donor Book - University Project
+# 🩸 Donor_Book
 
 A modern, responsive platform designed to connect blood donors with those in need. This project focuses on visual excellence, user engagement, and seamless functionality.
 
