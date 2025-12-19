@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Console\Kernel;
+
+define('LARAVEL_START', microtime(true));
+
+require __DIR__.'/vendor/autoload.php';
+
+try {
+    echo "Creating application...\n";
+    $app = new Application(dirname(__DIR__));
+    
+    echo "Registering kernel bindings...\n";
+    $app->singleton(
+        Illuminate\Contracts\Http\Kernel::class,
+        App\Http\Kernel::class
+    );
+
+    $app->singleton(
+        Illuminate\Contracts\Console\Kernel::class,
+        App\Console\Kernel::class
+    );
+
+    $app->singleton(
+        Illuminate\Contracts\Debug\ExceptionHandler::class,
+        App\Exceptions\Handler::class
+    );
+    
+    echo "Getting kernel...\n";
+    $kernel = $app->make(Kernel::class);
+
+    echo "Handling input...\n";
+    $status = $kernel->handle(
+        $input = new Symfony\Component\Console\Input\ArgvInput,
+        new Symfony\Component\Console\Output\ConsoleOutput
+    );
+
+    echo "Terminating...\n";
+    $kernel->terminate($input, $status);
+
+    exit($status);
+} catch (Throwable $e) {
+    echo "EXCEPTION: " . $e->getMessage() . "\n";
+    echo $e->getFile() . ":" . $e->getLine() . "\n";
+    echo $e->getTraceAsString() . "\n";
+    exit(1);
+}
