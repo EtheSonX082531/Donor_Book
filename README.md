@@ -4,8 +4,8 @@ A modern, responsive platform designed to connect blood donors with those in nee
 
 ## 🎓 University Project Details
 
-**Institution:** [Insert University Name]  
-**Course:** [Insert Course Name/Code]  
+**Institution:** Metropolitan University Sylhet  
+**Course:** Web Programming 
 **Team Members:**
 
 | Name | Student ID |
